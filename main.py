@@ -1,18 +1,41 @@
 import streamlit as st
+import mysql.connector
 import cv2
 import numpy as np
 
-img_file_buffer = st.camera_input("Take a picture")
 
-if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
-    bytes_data = img_file_buffer.getvalue()
-    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
+my_db  = mysql.connector.connect(
+          host="sql.freedb.tech",
+          user="freedb_images",
+          password="gEzze6ZHjU#M4e2",
+          database="freedb_image_data"
+    )
+  
 
-    # Check the type of cv2_img:
-    # Should output: <class 'numpy.ndarray'>
-    st.write(type(cv2_img))
 
-    # Check the shape of cv2_img:
-    # Should output shape: (height, width, channels)
-    st.write(cv2_img.shape)
+
+
+mycursor = my_db.cursor()
+
+mycursor.execute("SELECT * FROM images")
+
+myresult = mycursor.fetchall()
+final_list = []
+for x in myresult:
+  final_list.append(x)
+
+
+for i in range(len(final_list)):
+  
+  image_data = final_list[i][2]
+  nparr = np.frombuffer(image_data, np.uint8)
+  try:
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)   # getting the gray-scale image
+    # appying the fucntion here
+
+    st.image(img)
+  except:
+    continue 
+  
+
+  
