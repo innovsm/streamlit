@@ -1,13 +1,13 @@
 import streamlit as st
 import mysql.connector
-import cv2
+import cv2.cv2 as cv
 import numpy as np
 from factory import *
 
 
     
 
-data_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
+data_cascade = cv.CascadeClassifier("haarcascade_frontalface_alt2.xml")
 
 my_db  = mysql.connector.connect(
           host="sql.freedb.tech",
@@ -30,7 +30,7 @@ for i in range(len(final_list)):
   image_data = final_list[i][2]
   nparr = np.frombuffer(image_data, np.uint8)
   try:
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)   # getting the gray-scale image
+    img = cv.imdecode(nparr, cv.IMREAD_COLOR)   # getting the gray-scale image
     # appying the fucntion here
     final_function_and_save(data_cascade,img)  # emotion detection and saving refined data in database
   
