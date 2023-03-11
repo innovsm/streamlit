@@ -80,7 +80,9 @@ if checkbox:
   data_emotion.index = pd.to_datetime(data_emotion['time'])
   #print(data_emotion.columns)
   data_emotion.drop(['time'], axis = 1 ,inplace = True)
-  st.write(data_emotion)
+  
   st.line_chart(data_emotion)
+  st.subheader("main dataframe")
+  st.write(data_emotion)
 
   
