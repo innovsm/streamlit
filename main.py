@@ -63,6 +63,8 @@ We are committed to implementing our system responsibly,
  contribute to a more equitable and inclusive education system.
 Join us in our mission to revolutionize education and empower students to reach their full potential.""")
 
+# adding the link
+st.markdown("[click here for camera access](https://alternative-3znj.onrender.com/)", )
 st.title("FocusMate")
 st.write("the following graph will generate the emotional response of the students during the session")
 checkbox = st.checkbox("Get Result")
