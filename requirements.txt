@@ -2,3 +2,6 @@ numpy
 opencv-python-headless
 streamlit
 mysql-connector-python
+pandas
+tensorflow
+deepface
