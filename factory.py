@@ -1,12 +1,12 @@
 import tensorflow as tf  
-import cv2.cv2 as cv
+import cv2
 from deepface import DeepFace
 import mysql.connector
 import pandas as pd
 from datetime import datetime
 
 def final_function(model_face,frame):
-    frame_gray  = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
+    frame_gray  = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     faces =  model_face.detectMultiScale(frame_gray)
     final_value = []
     for face in faces:
