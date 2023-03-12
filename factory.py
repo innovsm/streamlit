@@ -2,7 +2,8 @@ import tensorflow as tf
 import cv2
 from deepface import DeepFace
 import mysql.connector
-import pandas as pd
+import pandas as pd  # used by main module
+import pytz
 from datetime import datetime
 
 def final_function(model_face,frame):
@@ -62,7 +63,9 @@ def final_function_and_save(model_face, frame):
 
     try:
         # Get current date and time
-        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        timezone = pytz.timezone("Asia/Kolkata")
+        date_now = datetime.now(timezone)
+        now = date_now.strftime('%Y-%m-%d %H:%M:%S')
 
         # Insert emotion data into MySQL table
         sql = "INSERT INTO emotions (time, angry, disgust, fear, happy, sad, surprise, neutral) VALUES ('{}', {})".format(now, emotion_str)
