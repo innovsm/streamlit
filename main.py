@@ -3,6 +3,7 @@ import mysql.connector
 import cv2
 import numpy as np
 from factory import *
+from plotly import express as exp
 
 st.set_page_config(page_title="Result", layout="wide")
 
@@ -75,14 +76,26 @@ if checkbox:
   mycursor.execute(sql)
   result = mycursor.fetchall()
   data_emotion = pd.DataFrame(result, columns=[ 'time', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'])
-  #df.to_csv("test_data.csv")
-  # plotting start from here'
-  data_emotion.index = pd.to_datetime(data_emotion['time'])
-  #print(data_emotion.columns)
-  data_emotion.drop(['time'], axis = 1 ,inplace = True)
   
-  st.line_chart(data_emotion)
-  st.subheader("main dataframe")
-  st.write(data_emotion)
+  data_emotion.index = pd.to_datetime(data_emotion['time'])
+
+  data_emotion.drop(['time'], axis = 1 ,inplace = True)
+  tab_1, tab_2,tab_3 = st.tabs(["line-chart", "pie-chart","dataframe-generated"])
+  with tab_1:
+    st.title("Real time access")
+    st.write("real time emotional response of student during session")
+    st.line_chart(data_emotion)
+  with tab_2:
+    st.title("Pie Chart")
+    data_1 = data_emotion
+    alfa = pd.DataFrame(data_1[['angry','disgust', 'fear', 'happy','sad','surprise', 'neutral']].sum())
+    alfa['emotion'] = alfa.index
+    colors = exp.colors.sequential.RdBu
+    fig = exp.pie(alfa, values=0, names='emotion', title='Emotion Distribution', color_discrete_sequence=colors)
+    st.plotly_chart(fig)
+  with tab_3:
+    st.title("Dataframe")
+    st.subheader("main dataframe")
+    st.write(data_emotion)
 
   

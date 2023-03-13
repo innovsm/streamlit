@@ -6,3 +6,4 @@ pandas
 tensorflow
 deepface
 pytz
+plotly
