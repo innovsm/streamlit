@@ -5,7 +5,7 @@ import numpy as np
 from factory import *
 from plotly import express as exp
 
-st.set_page_config(page_title="Result", layout="wide")
+st.set_page_config(page_title="Result",layout="centered")
 
 data_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
 
