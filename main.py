@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from factory import *
 from plotly import express as exp
+import time
 data_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
 # ==========================   main.pyh ===========================
 def job():
@@ -106,7 +107,8 @@ else:
       alfa = job()
       if(len(alfa) == 0):
          x = False
-      
+      else:
+         time.sleep(20)
 
       
 
