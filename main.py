@@ -68,9 +68,9 @@ with st.expander("About", expanded=False):
   st.write(alfa_string())
 
 # adding the link
-st.markdown("[click here for camera access](https://alternative-3znj.onrender.com/)", )
+st.markdown("[click here for camera access](https://alternative-3znj.onrender.com/)")
 st.title("FocusMate")
-st.write("the following graph will generate the emotional response of the students during the session")
+st.write("the following graph will generate the emotional response of the students during the session[class]")
 checkbox = st.checkbox("Get Result")
 
 if checkbox:
