@@ -115,9 +115,11 @@ def destroy_table():
         )
 
     mycursor = my_db.cursor()
-    sql = "TRUNCATE TABLE images"
+    sql = "TRUNCATE TABLE emotions"
     my_db.commit()
     mycursor.execute(sql)
     mycursor.close()
     return True
+
+
     

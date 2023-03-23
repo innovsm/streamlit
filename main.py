@@ -97,6 +97,13 @@ if checkbox:
     fig = exp.pie(alfa, values=0, names='emotion', title='Emotion Distribution', color_discrete_sequence=colors)
     st.plotly_chart(fig)
   with tab_3:
+    reset_dataset = st.checkbox("reset_dataframe")
+    if(reset_dataset):
+       confirm = destroy_table()
+       if(confirm):
+          st.write("operation successfull")
+       else:
+          st.write("error occurred")
     st.title("Dataframe")
     st.subheader("main dataframe")
     st.write(data_emotion)
