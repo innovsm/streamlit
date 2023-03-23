@@ -64,6 +64,17 @@ my_db  = mysql.connector.connect(
 
 
 # ------------------------  main_workflow -----------------------
+
+with st.sidebar:
+   st.text("saffron.ai")
+   with st.expander("How to Use", expanded=False):
+      st.subheader("Positive emotions")
+      st.write("Look for patterns of 'happy' and 'surprise' emotions crossing the neutral emotion line. This means students are finding those parts of the lesson engaging or enjoyable")
+      st.subheader("Negative emotions")
+      st.write("Look for patterns of 'fear' and 'sad' emotions crossing the neutral emotion line. This means students may be experiencing negative emotions related to the lesson content or teaching approach.")
+      st.write("Monitor the levels of positive and negative emotions across the entire class and look for patterns that indicate a positive or negative classroom atmosphere. Use this information to adjust teaching strategies and activities as needed to create a more positive and supportive learning environment.")
+
+
 with st.expander("About", expanded=False):
   st.write(alfa_string())
 
